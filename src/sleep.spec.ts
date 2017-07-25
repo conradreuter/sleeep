@@ -11,6 +11,10 @@ describe('The sleep function', () => {
     await sleep(TIME)
   })
 
+  it('should returns a promise with a proper catch method', () => {
+    return sleep(TIME).catch(() => Promise.reject('Rejected'))
+  })
+
   it('should return a promise that resolves after the specified time has passed', () => {
     const succeed = sleep(TIME)
     const fail = new Promise((_, reject) => setTimeout(() => reject('Slept too long'), TIME_TOO_LONG))
